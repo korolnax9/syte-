@@ -1,30 +1,135 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
+
     <meta charset="UTF-8">
-    <title>Мой сайт</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Для Полинки </title>
+
     <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;700&display=swap"
+        rel="stylesheet">
+
 </head>
+
 <body>
 
-<div class="content">
-    <h1>Привет Полинка!</h1>
-    <p>Как        дела???</p>
+    <!-- 🌸 Лепестки -->
+    <div id="petals"></div>
 
-<a href="page2.html">
-    <button>хорошо))</button>
-</a>
-<a href="page3.html">
-    <button>не очень((</button>
-</a>
+    <div class="container" id="mainPage">
 
-<img class="item item1" src="5.jpg">
-    <img class="item item2" src="6.jpg">
-    <img class="item item3" src="7.jpg">
-    <img class="item item4" src="8.jpg">
-</div>  
+        <div class="glass">
+
+            <h1 class="fade">
+                Привет, Полинка !!!
+            </h1>
+ 
+            <p class="fade delay1">
+                Как дела сегодня?
+            </p>
+
+            <div class="buttons fade delay2">
+
+                <button onclick="openGoodPage()">
+                          хорошо))
+                </button>
+
+                <button id="noButton">
+     не очень((
+</button>
+
+            </div>
+
+            <div class="gallery fade delay3">
+
+                <img src="5.jpg" alt="Фото 1">
+
+                <img src="6.jpg" alt="Фото 2">
+
+                <img src="7.jpg" alt="Фото 3">
+
+                <img src="8.jpg" alt="Фото 4">
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- конец главной страницы -->
+
+
+    <!--  Вторая часть сайта -->
+
+    <div class="container hidden pageAnimation" id="goodPage">
+
+    <div class="glass">
+
+        <h1 class="fade">
+            я так и знал 
+        </h1>
+
+
+        <p class="fade delay1">
+            что у тебя все хорошо )
+        </p>
+
+
+        <button class="fade delay3" onclick="backPage()">
+            ⬅ Назад
+        </button>
+
+
+    </div>
+
 </div>
+
+    <!-- 📸 Просмотр фотографий -->
+
+    <div id="viewer">
+
+        <span id="close">&times;</span>
+
+        <button id="prev" class="navButton">❮</button>
+
+        <img id="bigImage" src="" alt="">
+
+        <button id="next" class="navButton">❯</button>
+
+    </div>
+
+    <!-- 🎵 Музыка -->
+
+      <div class="musicBox">
+
+<button id="musicButton">
+🎵 Музыка
+</button>
+
+<input 
+type="range"
+id="volume"
+min="0"
+max="1"
+step="0.01"
+value="0.5">
+
+</div>
+
+
+<audio id="music" loop>
+
+<source src="music.mp3" type="audio/mpeg">
+
+</audio>
+
+
 <script src="script.js"></script>
- <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Great+Vibes&display=swap" rel="stylesheet">
+
 </body>
+
 </html>

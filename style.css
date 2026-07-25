@@ -1,118 +1,584 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #f2f2f2;
-    text-align: center;
-    margin-top: 100px;
+/* ===========================
+   СБРОС
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-h1 {    
-    color: #f00094;
-    font-weight: bold;
-    font-size: 64px;
+html,body{
+    width:100%;
+    height:100%;
 }
 
-body {
-    font-family: "Great Vibes", cursive;
-    background: #f2f2f2;
-    text-align: center;
-    margin-top: 100px;
+/* ===========================
+   ФОН
+=========================== */
+
+body{
+
+    font-family:"Cormorant Garamond",serif;
+
+    background:url("1123.jpg") center center/cover no-repeat fixed;
+
+    overflow-x:hidden;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:25px;
+
 }
 
-p {
-    color: #ff0077;
-    font-weight: bold;
-    font-size: 44px;
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0, 0, 0, 0.35);
+
+    z-index:-2;
+
 }
 
-body {
-    font-family: "Great Vibes", cursive;
-    background: #f2f2f2;
-    text-align: center;
-    margin-top: 500px;
+/* ===========================
+   КОНТЕЙНЕР
+=========================== */
+
+.container{
+
+    width:100%;
+    max-width:1200px;
+
 }
 
-.bttn123  {
-    font-family: Arial, sans-serif;
-    background: #f2f2f2;
-    text-align: center;
-    margin-top: 100px;
-    padding: 10px 20px;
-    font-size: 16px;
-    margin-right: 999px;
-    color: #b300d7;
+.glass{
+
+    width:100%;
+
+    padding:45px;
+
+    border-radius:30px;
+
+    background:rgba(204, 90, 143, 0.12);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+
+    text-align:center;
+
+}
+
+/* ===========================
+   ТЕКСТ
+=========================== */
+
+h1{
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:clamp(55px,8vw,95px);
+
+    color:#ff66aa;
+
+    text-shadow:0 0 25px rgba(255,120,180,.8);
+
+    margin-bottom:20px;
+
+}
+
+p{
+
+    font-size:clamp(24px,4vw,42px);
+
+    color:rgb(253, 66, 169);
+
+    margin-bottom:40px;
+
+}
+
+/* ===========================
+   КНОПКИ
+=========================== */
+
+.buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:45px;
+
+}
+
+button{
+
+    width:220px;
+
+    height:60px;
+
+    border:none;
+
+    border-radius:40px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:20px;
+
+    background:linear-gradient(45deg,#ff4fa1,#ff8dc9);
+
+    transition:.35s;
+
+    box-shadow:0 10px 30px rgba(255,0,120,.35);
+
+}
+
+button:hover{
+
+    transform:translateY(-6px) scale(1.05);
+
+    box-shadow:0 18px 40px rgba(255,0,120,.6);
+
+}
+
+/* ===========================
+   ГАЛЕРЕЯ
+=========================== */
+
+.gallery{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+.gallery img{
+
+    width:100%;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.35);
+
+}
+
+.gallery img:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* ===========================
+   ПРОСМОТР ФОТО
+=========================== */
+
+#viewer{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.9);
+
+    z-index:9999;
+
+}
+
+#bigImage{
+
+    max-width:90%;
+
+    max-height:85%;
+
+    border-radius:20px;
+
+}
+
+#close{
+
+    position:absolute;
+
+    top:20px;
+
+    right:35px;
+
+    color:white;
+
+    font-size:50px;
+
+    cursor:pointer;
+
+}
+
+.navButton{
+
+    position:absolute;
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:50%;
+
+    font-size:28px;
+
+}
+
+#prev{
+
+    left:30px;
+
+}
+
+#next{
+
+    right:30px;
+
+}
+
+
+/* ===========================
+   ЛЕПЕСТКИ
+=========================== */
+
+#petals{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:-1;
+
+}
+
+.petal{
+
+    position:absolute;
+
+    top:-30px;
+
+    border-radius:70% 0 70% 0;
+
+    opacity:.9;
+
+    pointer-events:none;
+
+    animation-name:fall;
+
+    animation-timing-function:linear;
+
+    animation-fill-mode:forwards;
+
+}
+
+@keyframes fall{
+
+0%{
+
+transform:
+translateY(-50px)
+translateX(0px)
+rotate(0deg);
+
+}
+
+25%{
+
+transform:
+translateY(25vh)
+translateX(35px)
+rotate(120deg);
+
+}
+
+50%{
+
+transform:
+translateY(50vh)
+translateX(-25px)
+rotate(220deg);
+
+}
+
+75%{
+
+transform:
+translateY(75vh)
+translateX(40px)
+rotate(330deg);
+
+}
+
+100%{
+
+transform:
+translateY(110vh)
+translateX(-35px)
+rotate(430deg);
+
+}
+
+}
+
+/* ===========================
+   ПОЯВЛЕНИЕ
+=========================== */
+
+.fade{
+
+    opacity:0;
+
+    transform:translateY(35px);
+
+    animation:show 1.2s forwards;
+
+}
+
+.delay1{
+
+    animation-delay:.4s;
+
+}
+
+.delay2{
+
+    animation-delay:.8s;
+
+}
+
+.delay3{
+
+    animation-delay:1.2s;
+
+}
+
+@keyframes show{
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ===========================
+   ТЕЛЕФОН
+=========================== */
+
+@media(max-width:768px){
+
+.glass{
+
+padding:25px;
+
+}
+
+.buttons{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+button{
+
+width:190px;
+
+height:55px;
+
+font-size:18px;
+
+}
+
+.gallery{
+
+grid-template-columns:1fr;
+
+}
+
+#prev{
+
+left:8px;
+
+}
+
+#next{
+
+right:8px;
+
+}
+
+.navButton{
+
+width:50px;
+
+height:50px;
+
+}
+
+
+
+#volume{
+
+    width:130px;
+
+    cursor:pointer;
+
+}
+
+
+
+@media(max-width:768px){
+
+
+
+}
+
 }
 body{
-    background-image: url("1123.jpg");
-    background-size: cover;
-    background-position: center 1px;
-}
-butto{
-    width: 500px;
-    height: 120px;
 
-    border: none;
-    border-radius: 90px;
-    font-family: Arial, sans-serif;
+    min-height:100vh;
 
-    background: #7700ff;
-    color: white;
-    font-family: Arial, sans-serif;
-    font-size: 50px;
-    color:#15c9b1;
-    cursor: pointer;
-    margin-top: 500px;
-    font-family: Arial, sans-serif;
-    
-}
-button{
-    width: 220px;
-    height: 60px;
+    background-image:url("1123.jpg");
 
-    background: #a52d87;
-    color: rgb(88, 250, 223);
+    background-size:cover;
 
-    border: none;
-    border-radius: 30px;
+    background-position:center;
 
-    font-size: 20px;
-    cursor: pointer;
+    background-attachment:fixed;
 
-   
-}
-button{
-    font-family: "Cormorant+Garamond", cursive;
 }
 
-.photo {
-    position: relative;
-    width: 600px;
+.musicBox {
+
+    position: fixed;
+
+    right: 20px;
+
+    bottom: 20px;
+
+    z-index: 9999;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 10px;
+
 }
 
-.background {
-    width: 100%;
+
+.musicBox button {
+
+    width: 160px;
+
+    height: 45px;
+
 }
 
-.item {
-    position: absolute;
-    width: 350px;
+
+#volume {
+
+    width: 160px;
+
+}
+.hidden{
+
+    display:none;
+
+}
+.fade{
+
+    animation: fadeIn 1s ease forwards;
+
 }
 
-.item1 {
-    top: 200px;
-    left: 450px;
+
+.delay1{
+
+    animation-delay:.3s;
+
 }
 
-.item2 {
-    top: 200px;
-    right: 400px;
+
+.delay2{
+
+    animation-delay:.6s;
+
 }
 
-.item3 {
-    bottom: 200px;
-    left: 300px;
+
+.delay3{
+
+    animation-delay:.9s;
+
 }
 
-.item4 {
-    bottom: 200px;
-    right: 200px;
+
+@keyframes fadeIn{
+
+
+from{
+
+    opacity:0;
+
+    transform:translateY(30px);
+
+}
+
+
+to{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+
+}
+.smileText{
+
+    color:#ff69b4;
+
 }
