@@ -668,3 +668,12 @@ width:160px;
     }
 
 }
+@media(max-width:600px){
+
+    .container{
+
+        transform:translateY(80px);
+
+    }
+
+}
