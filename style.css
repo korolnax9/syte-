@@ -529,147 +529,128 @@ width:160px;
 @media(max-width:600px){
 
 
+    body{
 
-body{
+        display:flex;
 
-    display:block;
+        justify-content:center;
 
-    padding:10px;
+        align-items:center;
 
-    background-attachment:scroll;
+        min-height:100vh;
 
-}
+        padding:15px;
 
+    }
 
 
-.container{
+    .container{
 
-    width:100%;
+        width:100%;
 
-}
+        max-width:420px;
 
+    }
 
+    .glass{
 
-.glass{
+        width:100%;
 
-    width:100%;
+        padding:30px 20px;
 
-    padding:25px 15px;
+        border-radius:30px;
 
-    border-radius:25px;
+        max-height:90vh;
 
-}
+        overflow-y:auto;
 
+    }
 
 
-h1{
+    h1{
 
-    font-size:45px;
+        font-size:45px;
 
-}
+    }
 
+    p{
 
+        font-size:26px;
 
-p{
+    }
 
-    font-size:26px;
+    .buttons{
 
-}
+        flex-direction:column;
 
+        align-items:center;
 
+        gap:15px;
 
-.buttons{
+    }
 
-    flex-direction:column;
+    button{
 
-    gap:15px;
+        width:200px;
 
-}
+        height:55px;
 
+        font-size:18px;
 
+    }
 
-button{
+    .gallery{
 
-    width:200px;
+        grid-template-columns:repeat(2,1fr);
 
-    height:55px;
+        gap:12px;
 
-    font-size:18px;
+    }
 
-}
+    .gallery img{
 
+        width:100%;
 
+    }
 
-.gallery{
+    #bigImage{
 
-    grid-template-columns:repeat(2,1fr);
+        max-width:95%;
 
-    gap:12px;
+    }
 
-}
+    .navButton{
 
+        width:50px;
 
+        height:50px;
 
-.gallery img{
+    }
 
-    width:100%;
+    #prev{
 
-}
+        left:10px;
 
+    }
 
+    #next{
 
-#bigImage{
+        right:10px;
 
-    max-width:95%;
+    }
 
-}
+    .musicBox{
 
+        right:50%;
 
+        bottom:15px;
 
-.navButton{
+        transform:translateX(50%) scale(.85);
 
-    width:50px;
+    }
 
-    height:50px;
+    #volume{
 
-}
+        width:130px;
 
-
-
-#prev{
-
-    left:10px;
-
-}
-
-
-
-#next{
-
-    right:10px;
-
-}
-
-
-
-.musicBox{
-
-    right:50%;
-
-    bottom:15px;
-
-    transform:translateX(50%) scale(.85);
-
-}
-
-
-
-#volume{
-
-    width:130px;
-
-}
-
-
-
-}
+    }
