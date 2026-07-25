@@ -654,3 +654,15 @@ width:160px;
         width:130px;
 
     }
+    
+    @media(max-width:600px){
+
+    .gallery{
+
+        grid-template-columns:repeat(3,1fr);
+
+        gap:10px;
+
+    }
+
+}
