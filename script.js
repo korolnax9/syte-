@@ -400,8 +400,9 @@ function moveNoButton(){
 
 
     const maxY =
-    area.clientHeight -
-    noButton.offsetHeight;
+area.clientHeight -
+noButton.offsetHeight -
+20;
 
 
 
