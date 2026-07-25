@@ -582,3 +582,118 @@ to{
     color:#ff69b4;
 
 }
+/* 📱 Версия для телефона */
+
+@media (max-width: 600px) {
+
+
+    body{
+
+        margin-top:20px;
+
+        overflow-x:hidden;
+
+    }
+
+
+    .container{
+
+        width:100%;
+
+        padding:10px;
+
+    }
+
+
+    .glass{
+
+        width:90%;
+
+        margin:auto;
+
+        padding:20px;
+
+    }
+
+
+
+    h1{
+
+        font-size:42px;
+
+    }
+
+
+
+    p{
+
+        font-size:28px;
+
+    }
+
+
+
+    .buttons{
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        gap:20px;
+
+    }
+
+
+
+    button{
+
+        width:200px;
+
+        height:55px;
+
+        font-size:20px;
+
+    }
+
+
+
+    .gallery{
+
+        display:flex;
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        gap:15px;
+
+    }
+
+
+
+    .gallery img{
+
+        width:140px;
+
+        height:auto;
+
+    }
+
+
+
+    .musicBox{
+
+        right:10px;
+
+        bottom:10px;
+
+        transform:scale(0.8);
+
+        transform-origin:bottom right;
+
+    }
+
+
+}
