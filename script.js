@@ -290,42 +290,7 @@ document.getElementById("noButton");
 let noClicks = 0;
 
 
-noButton.addEventListener("mouseenter", ()=>{
-
-    noClicks++;
-
-    noButton.style.position="fixed";
-
-    noButton.style.left =
-    Math.random()*80+"vw";
-
-    noButton.style.top =
-    Math.random()*80+"vh";
-
-
-    if(noClicks>=8){
-
-        noButton.style.opacity="0";
-
-
-        let text=document.createElement("h2");
-
-
-        text.innerHTML =
-        " Я знаю что ты улыбаешься)";
-
-        
-
-
-        text.className="fade smileText";
-
-
-        document.querySelector(".buttons")
-        .appendChild(text);
-
-    }
-
-});
+;
 
 const noLink =
 document.getElementById("noLink");
@@ -358,72 +323,56 @@ const messages = [
 
 function moveNoButton(){
 
-
     tries++;
-
 
     if(tries >= 8){
 
-
         noButton.style.transition=".5s";
-
         noButton.style.opacity="0";
-
 
         setTimeout(()=>{
 
-
-            noLink.remove();
-
+            noButton.remove();
 
             const text=document.createElement("h2");
 
-
             text.innerHTML =
-           " я знаю что ты улыбаешься)";
+            "Я знаю что ты улыбаешься)";
 
-
-            text.style.color="pink";
-
+            text.className="fade smileText";
 
             document
             .querySelector(".buttons")
             .appendChild(text);
 
-
         },500);
 
-
-            ;
-
+        return;
     }
-
 
 
     noButton.innerHTML =
     messages[tries];
 
 
-    const box = document.querySelector(".buttons");
-
-const rect = box.getBoundingClientRect();
+    const area = document.querySelector(".buttons");
 
 
-const x =
-rect.left + Math.random() * (rect.width - 220);
+    const maxX = area.clientWidth - noButton.offsetWidth;
+    const maxY = area.clientHeight - noButton.offsetHeight;
 
 
-const y =
-rect.top + Math.random() * (rect.height - 60);
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
 
 
+    noButton.style.position="absolute";
 
-noButton.style.position="fixed";
+    noButton.style.left=x+"px";
 
-noButton.style.left=x+"px";
+    noButton.style.top=y+"px";
 
-noButton.style.top=y+"px";
-
+    noButton.style.zIndex="9999";
 
 }
 
