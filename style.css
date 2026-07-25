@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    text-align: center;
+    margin-top: 100px;
+}
+
+h1 {    
+    color: #f00094;
+    font-weight: bold;
+    font-size: 64px;
+}
+
+body {
+    font-family: "Great Vibes", cursive;
+    background: #f2f2f2;
+    text-align: center;
+    margin-top: 100px;
+}
+
+p {
+    color: #ff0077;
+    font-weight: bold;
+    font-size: 44px;
+}
+
+body {
+    font-family: "Great Vibes", cursive;
+    background: #f2f2f2;
+    text-align: center;
+    margin-top: 500px;
+}
+
+.bttn123  {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    text-align: center;
+    margin-top: 100px;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-right: 999px;
+    color: #b300d7;
+}
+body{
+    background-image: url("1123.jpg");
+    background-size: cover;
+    background-position: center 1px;
+}
+butto{
+    width: 500px;
+    height: 120px;
+
+    border: none;
+    border-radius: 90px;
+    font-family: Arial, sans-serif;
+
+    background: #7700ff;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 50px;
+    color:#15c9b1;
+    cursor: pointer;
+    margin-top: 500px;
+    font-family: Arial, sans-serif;
+    
+}
+button{
+    width: 220px;
+    height: 60px;
+
+    background: #a52d87;
+    color: rgb(88, 250, 223);
+
+    border: none;
+    border-radius: 30px;
+
+    font-size: 20px;
+    cursor: pointer;
+
+   
+}
+button{
+    font-family: "Cormorant+Garamond", cursive;
+}
+
+.photo {
+    position: relative;
+    width: 600px;
+}
+
+.background {
+    width: 100%;
+}
+
+.item {
+    position: absolute;
+    width: 350px;
+}
+
+.item1 {
+    top: 200px;
+    left: 450px;
+}
+
+.item2 {
+    top: 200px;
+    right: 400px;
+}
+
+.item3 {
+    bottom: 200px;
+    left: 300px;
+}
+
+.item4 {
+    bottom: 200px;
+    right: 200px;
+}
