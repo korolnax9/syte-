@@ -1,6 +1,6 @@
-//* ===========================
+/* =========================
    СБРОС
-=========================== */
+========================= */
 
 *{
     margin:0;
@@ -9,26 +9,23 @@
 }
 
 
-html,body{
-
+html, body{
     width:100%;
     min-height:100%;
-
 }
 
 
-/* ===========================
-   ФОН
-=========================== */
-
+/* =========================
+   ОСНОВА
+========================= */
 
 body{
 
-    font-family:"Cormorant Garamond",serif;
+    min-height:100vh;
+
+    font-family:"Cormorant Garamond", serif;
 
     background:url("1123.jpg") center/cover fixed no-repeat;
-
-    overflow-x:hidden;
 
     display:flex;
 
@@ -38,8 +35,9 @@ body{
 
     padding:20px;
 
-}
+    overflow-x:hidden;
 
+}
 
 
 body::before{
@@ -57,9 +55,65 @@ body::before{
 }
 
 
-/* ===========================
-   КОНТЕЙНЕР
-=========================== */
+/* =========================
+   САКУРА
+========================= */
+
+
+#petals{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:-1;
+
+}
+
+
+.petal{
+
+    position:absolute;
+
+    top:-30px;
+
+    border-radius:70% 0 70% 0;
+
+    animation:fall linear forwards;
+
+}
+
+
+@keyframes fall{
+
+    from{
+
+        transform:
+        translateY(-50px)
+        rotate(0deg);
+
+    }
+
+
+    to{
+
+        transform:
+        translateY(110vh)
+        rotate(430deg);
+
+    }
+
+}
+
+
+
+/* =========================
+   СТРАНИЦЫ
+========================= */
 
 
 .container{
@@ -71,6 +125,18 @@ body::before{
 }
 
 
+.hidden{
+
+    display:none;
+
+}
+
+
+
+/* =========================
+   СТЕКЛО
+========================= */
+
 
 .glass{
 
@@ -80,27 +146,36 @@ body::before{
 
     border-radius:30px;
 
-    background:rgba(204,90,143,.15);
+
+    background:
+    rgba(204,90,143,.15);
+
 
     backdrop-filter:blur(12px);
 
-    border:1px solid rgba(255,255,255,.25);
 
-    box-shadow:0 20px 60px rgba(0,0,0,.35);
+    border:
+    1px solid rgba(255,255,255,.25);
+
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.35);
+
 
     text-align:center;
 
 }
 
 
-/* ===========================
+
+/* =========================
    ТЕКСТ
-=========================== */
+========================= */
 
 
 h1{
 
-    font-family:"Great Vibes",cursive;
+    font-family:"Great Vibes", cursive;
 
     font-size:clamp(55px,8vw,95px);
 
@@ -127,12 +202,62 @@ p{
 
 
 
-/* ===========================
+/* =========================
+   АНИМАЦИЯ
+========================= */
+
+
+.fade{
+
+    opacity:0;
+
+    transform:translateY(35px);
+
+    animation:show 1.2s forwards;
+
+}
+
+
+.delay1{
+    animation-delay:.4s;
+}
+
+
+.delay2{
+    animation-delay:.8s;
+}
+
+
+.delay3{
+    animation-delay:1.2s;
+}
+
+
+
+@keyframes show{
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+/* =========================
    КНОПКИ
-=========================== */
+========================= */
 
 
 .buttons{
+
+    position:relative;
+
+    min-height:90px;
 
     display:flex;
 
@@ -141,8 +266,6 @@ p{
     align-items:center;
 
     gap:25px;
-
-    flex-wrap:wrap;
 
     margin-bottom:45px;
 
@@ -166,16 +289,20 @@ button{
 
     font-size:20px;
 
-    background:linear-gradient(
+
+    background:
+    linear-gradient(
         45deg,
         #ff4fa1,
         #ff8dc9
     );
 
-    transition:.35s;
 
     box-shadow:
     0 10px 30px rgba(255,0,120,.35);
+
+
+    transition:.35s;
 
 }
 
@@ -183,15 +310,40 @@ button{
 
 button:hover{
 
-    transform:translateY(-6px) scale(1.05);
+    transform:
+    translateY(-6px)
+    scale(1.05);
 
 }
 
 
 
-/* ===========================
+
+/* =========================
+   УБЕГАЮЩАЯ КНОПКА
+========================= */
+
+
+#noButtonWrap{
+
+    position:relative;
+
+}
+
+
+#noButton{
+
+    position:relative;
+
+    z-index:20;
+
+}
+
+
+
+/* =========================
    ГАЛЕРЕЯ
-=========================== */
+========================= */
 
 
 .gallery{
@@ -215,7 +367,9 @@ button:hover{
 
     cursor:pointer;
 
+
     transition:.35s;
+
 
     box-shadow:
     0 12px 35px rgba(0,0,0,.35);
@@ -232,9 +386,9 @@ button:hover{
 
 
 
-/* ===========================
+/* =========================
    ПРОСМОТР ФОТО
-=========================== */
+========================= */
 
 
 #viewer{
@@ -249,7 +403,8 @@ button:hover{
 
     align-items:center;
 
-    background:rgba(0,0,0,.9);
+    background:
+    rgba(0,0,0,.9);
 
     z-index:9999;
 
@@ -298,13 +453,11 @@ button:hover{
 }
 
 
-
 #prev{
 
     left:30px;
 
 }
-
 
 
 #next{
@@ -315,189 +468,29 @@ button:hover{
 
 
 
-
-/* ===========================
-   САКУРА
-=========================== */
-
-
-#petals{
-
-    position:fixed;
-
-    inset:0;
-
-    overflow:hidden;
-
-    pointer-events:none;
-
-    z-index:-1;
-
-}
-
-
-
-.petal{
-
-    position:absolute;
-
-    top:-30px;
-
-    border-radius:70% 0 70% 0;
-
-    animation:fall linear forwards;
-
-}
-
-
-
-@keyframes fall{
-
-
-0%{
-
-transform:
-translateY(-50px)
-rotate(0deg);
-
-}
-
-
-
-50%{
-
-transform:
-translateY(50vh)
-rotate(220deg);
-
-}
-
-
-
-100%{
-
-transform:
-translateY(110vh)
-rotate(430deg);
-
-}
-
-
-}
-
-
-
-
-/* ===========================
-   АНИМАЦИЯ
-=========================== */
-
-
-.fade{
-
-    opacity:0;
-
-    transform:translateY(35px);
-
-    animation:show 1.2s forwards;
-
-}
-
-
-
-.delay1{
-
-animation-delay:.4s;
-
-}
-
-
-
-.delay2{
-
-animation-delay:.8s;
-
-}
-
-
-
-.delay3{
-
-animation-delay:1.2s;
-
-}
-
-
-
-@keyframes show{
-
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-
-}
-
-
-
-
-/* ===========================
-   СТРАНИЦЫ
-=========================== */
-
-
-.hidden{
-
-display:none;
-
-}
-
-
-
-/* ===========================
-   ТЕКСТ ПОСЛЕ КНОПКИ
-=========================== */
-
-
-.smileText{
-
-color:#ff69b4;
-
-text-shadow:
-0 0 10px #ff69b4;
-
-}
-
-
-
-
-/* ===========================
+/* =========================
    МУЗЫКА
-=========================== */
+========================= */
 
 
 .musicBox{
 
-position:fixed;
+    position:fixed;
 
-right:20px;
+    right:20px;
 
-bottom:20px;
+    bottom:20px;
 
-z-index:9999;
+    z-index:9999;
 
-display:flex;
 
-flex-direction:column;
+    display:flex;
 
-align-items:center;
+    flex-direction:column;
 
-gap:10px;
+    align-items:center;
+
+    gap:10px;
 
 }
 
@@ -505,30 +498,35 @@ gap:10px;
 
 .musicBox button{
 
-width:160px;
+    width:160px;
 
-height:45px;
+    height:45px;
 
 }
-
 
 
 #volume{
 
-width:160px;
+    width:160px;
 
 }
 
 
 
-/* ===========================
+
+/* =========================
    ТЕЛЕФОН
-=========================== */
+========================= */
 
 
 @media(max-width:600px){
 
+
     body{
+
+        min-height:100vh;
+
+        padding:15px;
 
         display:flex;
 
@@ -536,12 +534,8 @@ width:160px;
 
         align-items:center;
 
-        min-height:100vh;
-
-        padding:20px;
-
     }
-}
+
 
 
     .container{
@@ -550,26 +544,22 @@ width:160px;
 
         max-width:420px;
 
-        margin:0 auto;
-
-        padding-top:120px;
-
     }
+
 
 
     .glass{
 
-        width:100%;
-
         padding:30px 20px;
-
-        border-radius:30px;
 
         max-height:90vh;
 
         overflow-y:auto;
 
+        border-radius:25px;
+
     }
+
 
 
     h1{
@@ -579,6 +569,7 @@ width:160px;
     }
 
 
+
     p{
 
         font-size:26px;
@@ -586,15 +577,17 @@ width:160px;
     }
 
 
+
     .buttons{
 
         flex-direction:column;
 
-        align-items:center;
+        min-height:120px;
 
         gap:15px;
 
     }
+
 
 
     button{
@@ -608,6 +601,7 @@ width:160px;
     }
 
 
+
     .gallery{
 
         grid-template-columns:repeat(3,1fr);
@@ -616,19 +610,6 @@ width:160px;
 
     }
 
-
-    .gallery img{
-
-        width:100%;
-
-    }
-
-
-    #bigImage{
-
-        max-width:95%;
-
-    }
 
 
     .navButton{
@@ -640,11 +621,13 @@ width:160px;
     }
 
 
+
     #prev{
 
         left:10px;
 
     }
+
 
 
     #next{
@@ -654,40 +637,34 @@ width:160px;
     }
 
 
+
     .musicBox{
 
         right:50%;
-
-        bottom:15px;
 
         transform:translateX(50%) scale(.85);
 
     }
 
 
-    #volume{
-
-        width:130px;
-
-    }
-{      
-
 }
-@media(max-width:600px){
+/* =========================
+   ТЕКСТ ПОСЛЕ КНОПКИ
+========================= */
 
-    .container{
+.smileText{
 
-        transform:none;
+    color:#ff69b4;
 
-    }
+    font-size:35px;
 
-}
-.buttons{
-    position:relative;
-    min-height:100px;
-}
+    text-shadow:
+    0 0 10px #ff69b4,
+    0 0 25px rgba(255,105,180,.8);
 
-#noButton{
-    position:absolute;
-    z-index:9999;
+    margin-top:20px;
+
+    font-family:"Great Vibes", cursive;
+    font-size:55px;
+
 }

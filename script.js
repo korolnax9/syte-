@@ -15,42 +15,42 @@ const petalColors = [
 
 function createPetal(){
 
+    if(!petals) return;
+
+
     const petal = document.createElement("div");
 
     petal.className = "petal";
 
 
-    const size = Math.random() * 20 + 10;
+    const size = Math.random()*20+10;
 
 
-    petal.style.width = size + "px";
-    petal.style.height = size + "px";
+    petal.style.width = size+"px";
+    petal.style.height = size+"px";
 
 
-    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.left =
+    Math.random()*100+"vw";
 
 
     petal.style.background =
-        petalColors[
-            Math.floor(Math.random()*petalColors.length)
-        ];
+    petalColors[
+        Math.floor(Math.random()*petalColors.length)
+    ];
 
 
-    const duration = Math.random()*5 + 7;
-
-    petal.style.animationDuration = duration + "s";
-
-
-    petal.style.animationDelay =
-        Math.random()*3 + "s";
+    petal.style.animationDuration =
+    Math.random()*5+7+"s";
 
 
     petals.appendChild(petal);
 
 
+
     setTimeout(()=>{
 
-    petal.remove();
+        petal.remove();
 
     },12000);
 
@@ -61,15 +61,15 @@ setInterval(createPetal,250);
 
 
 
+
+
 // ==================================
 // 📸 ГАЛЕРЕЯ
 // ==================================
 
 
 const galleryImages =
-[
-    ...document.querySelectorAll(".gallery img")
-];
+document.querySelectorAll(".gallery img");
 
 
 const viewer =
@@ -92,6 +92,7 @@ const prev =
 document.getElementById("prev");
 
 
+
 let currentImage = 0;
 
 
@@ -103,6 +104,7 @@ function openImage(index){
     bigImage.src =
     galleryImages[currentImage].src;
 
+
     viewer.style.display="flex";
 
 }
@@ -111,11 +113,13 @@ function openImage(index){
 
 galleryImages.forEach((img,index)=>{
 
+
     img.onclick=()=>{
 
         openImage(index);
 
     };
+
 
 });
 
@@ -123,9 +127,11 @@ galleryImages.forEach((img,index)=>{
 
 next.onclick=()=>{
 
+
     currentImage++;
 
-    if(currentImage >= galleryImages.length){
+
+    if(currentImage>=galleryImages.length){
 
         currentImage=0;
 
@@ -141,9 +147,11 @@ next.onclick=()=>{
 
 prev.onclick=()=>{
 
+
     currentImage--;
 
-    if(currentImage < 0){
+
+    if(currentImage<0){
 
         currentImage =
         galleryImages.length-1;
@@ -166,9 +174,9 @@ close.onclick=()=>{
 
 
 
-viewer.onclick=(event)=>{
+viewer.onclick=(e)=>{
 
-    if(event.target===viewer){
+    if(e.target===viewer){
 
         viewer.style.display="none";
 
@@ -178,34 +186,42 @@ viewer.onclick=(event)=>{
 
 
 
-// 📱 свайп пальцем
+
+// ==================================
+// 📱 СВАЙП
+// ==================================
+
 
 let startX=0;
 
 
-viewer.addEventListener("touchstart",(event)=>{
+viewer.addEventListener(
+"touchstart",
+(e)=>{
 
     startX =
-    event.changedTouches[0].clientX;
+    e.changedTouches[0].clientX;
 
 });
 
 
-viewer.addEventListener("touchend",(event)=>{
+viewer.addEventListener(
+"touchend",
+(e)=>{
 
 
     let endX =
-    event.changedTouches[0].clientX;
+    e.changedTouches[0].clientX;
 
 
-    if(startX-endX > 60){
+    if(startX-endX>60){
 
         next.click();
 
     }
 
 
-    if(endX-startX > 60){
+    if(endX-startX>60){
 
         prev.click();
 
@@ -216,31 +232,35 @@ viewer.addEventListener("touchend",(event)=>{
 
 
 
+
 // ==================================
 // 🎵 МУЗЫКА
 // ==================================
 
 
-// 🎵 Музыка
-
-const music = document.getElementById("music");
-const musicButton = document.getElementById("musicButton");
-const volume = document.getElementById("volume");
+const music =
+document.getElementById("music");
 
 
-if (music && musicButton && volume) {
+const musicButton =
+document.getElementById("musicButton");
 
 
-    music.volume = 0.5;
+const volume =
+document.getElementById("volume");
 
 
-    volume.value = 0.5;
+
+if(music && musicButton && volume){
 
 
-    musicButton.onclick = () => {
+    music.volume=.5;
 
 
-        if (music.paused) {
+    musicButton.onclick=()=>{
+
+
+        if(music.paused){
 
 
             music.play();
@@ -250,7 +270,7 @@ if (music && musicButton && volume) {
             "⏸ Пауза";
 
 
-        } else {
+        }else{
 
 
             music.pause();
@@ -262,19 +282,20 @@ if (music && musicButton && volume) {
 
         }
 
-    };
-
-
-    volume.oninput = () => {
-
-
-        music.volume = volume.value;
-
 
     };
 
+
+
+    volume.oninput=()=>{
+
+        music.volume =
+        volume.value;
+
+    };
 
 }
+
 
 
 
@@ -287,165 +308,222 @@ if (music && musicButton && volume) {
 const noButton =
 document.getElementById("noButton");
 
-let noClicks = 0;
-
-
-;
-
-const noLink =
-document.getElementById("noLink");
-
 
 let tries = 0;
 
 
-const messages = [
+const messages=[
 
-" Не очень",
+"не поймаешь ",
 
-" не поймаешь",
+"неа ",
 
-" неа",
+"почти",
 
-" сюда",
+"хаха",
 
-" почти",
+"сюда",
 
-" хаха",
+"мимо ",
 
-" ну все",
+"ну всё",
 
-" последняя попытка"
+"последняя попытка"
 
 ];
 
 
 
+
 function moveNoButton(){
+
 
     tries++;
 
-    if(tries >= 8){
 
-        noButton.style.transition=".5s";
+    if(tries>=8){
+
+
         noButton.style.opacity="0";
+
 
         setTimeout(()=>{
 
+
             noButton.remove();
 
-            const text=document.createElement("h2");
+
+
+            const text =
+            document.createElement("h2");
+
 
             text.innerHTML =
             "Я знаю что ты улыбаешься)";
 
-            text.className="fade smileText";
+
+            text.className =
+            "fade smileText";
+
+
 
             document
             .querySelector(".buttons")
             .appendChild(text);
 
+
+
         },500);
 
+
         return;
+
     }
+
+
 
 
     noButton.innerHTML =
     messages[tries];
 
 
-    const area = document.querySelector(".buttons");
+
+    const area =
+    document.querySelector(".buttons");
 
 
-    const maxX = area.clientWidth - noButton.offsetWidth;
-    const maxY = area.clientHeight - noButton.offsetHeight;
+
+    const maxX =
+    area.clientWidth -
+    noButton.offsetWidth;
 
 
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
+
+    const maxY =
+    area.clientHeight -
+    noButton.offsetHeight;
 
 
-    noButton.style.position="absolute";
 
-    noButton.style.left=x+"px";
+    noButton.style.position =
+    "absolute";
 
-    noButton.style.top=y+"px";
 
-    noButton.style.zIndex="9999";
+
+    noButton.style.left =
+    Math.random()*maxX+"px";
+
+
+
+    noButton.style.top =
+    Math.random()*maxY+"px";
+
 
 }
 
 
 
-// ПК — только убегает
 
-noButton.addEventListener(
-"mouseenter",
-()=>{
+// ПК
 
-    if(window.innerWidth > 768){
+if(noButton){
 
-        moveNoButton();
-
-    }
-
-});
+    noButton.addEventListener(
+    "mouseenter",
+    ()=>{
 
 
+        if(window.innerWidth>768){
 
-// Телефон — только по нажатию
+            moveNoButton();
 
-noButton.addEventListener(
-"click",
-(e)=>{
+        }
 
 
-    if(window.innerWidth <= 768){
+    });
 
-        e.preventDefault();
 
-        moveNoButton();
 
-    }
+    // телефон
 
-});
+    noButton.addEventListener(
+    "click",
+    (e)=>{
+
+
+        if(window.innerWidth<=768){
+
+
+            e.preventDefault();
+
+
+            moveNoButton();
+
+        }
+
+
+    });
+
+}
+
+
 
 
 
 // ==================================
-// ✨ Эффект кнопки при клике
+// ✨ ЭФФЕКТ КНОПОК
 // ==================================
 
-document.querySelectorAll("button")
+
+document
+.querySelectorAll("button")
 .forEach(button=>{
 
 
-button.addEventListener("click",()=>{
+    button.addEventListener(
+    "click",
+    ()=>{
 
 
-    button.style.transform="scale(.9)";
+        button.style.transform =
+        "scale(.9)";
 
 
-    setTimeout(()=>{
+        setTimeout(()=>{
 
-        button.style.transform="";
 
-    },150);
+            button.style.transform="";
+
+
+        },150);
+
+
+    });
 
 
 });
 
 
-});
+
+
+// ==================================
+// 📄 СТРАНИЦЫ
+// ==================================
+
+
 function openGoodPage(){
 
-    document.getElementById("mainPage")
+
+    document
+    .getElementById("mainPage")
     .classList.add("hidden");
 
 
-    document.getElementById("goodPage")
+
+    document
+    .getElementById("goodPage")
     .classList.remove("hidden");
+
 
 }
 
@@ -453,12 +531,16 @@ function openGoodPage(){
 
 function backPage(){
 
-    document.getElementById("goodPage")
+
+    document
+    .getElementById("goodPage")
     .classList.add("hidden");
 
 
-    document.getElementById("mainPage")
+
+    document
+    .getElementById("mainPage")
     .classList.remove("hidden");
 
-}
 
+}

@@ -7,130 +7,235 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title> Для Полинки </title>
+    <title>Для Полинки</title>
+
 
     <link rel="stylesheet" href="style.css">
 
+
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;700&display=swap"
-        rel="stylesheet">
+    rel="stylesheet">
 
 </head>
 
+
 <body>
 
-    <!-- 🌸 Лепестки -->
-    <div id="petals"></div>
 
-    <div class="container" id="mainPage">
+<!-- 🌸 Лепестки -->
 
-        <div class="glass">
-
-            <h1 class="fade">
-                Привет, Полинка !!!
-            </h1>
- 
-            <p class="fade delay1">
-                Как дела сегодня?
-            </p>
-
-            <div class="buttons fade delay2">
-
-                <button onclick="openGoodPage()">
-                          хорошо))
-                </button>
-
-                <div id="noButtonWrap">
-
-    <button id="noButton">
-         не очень((
-    </button>
-
-</div>
-
-            </div>
-
-            <div class="gallery fade delay3">
-
-    <img src="6.jpg" alt="Фото 1">
-
-    <img src="7.jpg" alt="Фото 2">
-
-    <img src="8.jpg" alt="Фото 3">
-
-</div>
-
-        </div>
-
-    </div>
-    <!-- конец главной страницы -->
+<div id="petals"></div>
 
 
-    <!--  Вторая часть сайта -->
 
-    <div class="container hidden pageAnimation" id="goodPage">
+<!-- =========================
+     ГЛАВНАЯ СТРАНИЦА
+========================= -->
+
+
+<div class="container" id="mainPage">
+
 
     <div class="glass">
 
+
         <h1 class="fade">
-            я так и знал 
+            Привет, Полинка !!!
         </h1>
 
 
+
         <p class="fade delay1">
-            что у тебя все хорошо )
+            Как дела сегодня?
         </p>
 
 
+
+        <div class="buttons fade delay2">
+
+
+            <button onclick="openGoodPage()">
+
+                хорошо))
+
+            </button>
+
+
+
+            <button id="noButton">
+
+                не очень((
+
+            </button>
+
+
+        </div>
+
+
+
+
+        <!-- 📸 Галерея -->
+
+
+        <div class="gallery fade delay3">
+
+
+            <img src="6.jpg" alt="Фото 1">
+
+
+            <img src="7.jpg" alt="Фото 2">
+
+
+            <img src="8.jpg" alt="Фото 3">
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<!-- =========================
+     ВТОРАЯ СТРАНИЦА
+========================= -->
+
+
+<div class="container hidden" id="goodPage">
+
+
+    <div class="glass">
+
+
+        <h1 class="fade">
+
+            я так и знал
+
+        </h1>
+
+
+
+
+        <p class="fade delay1">
+
+            что у тебя всё хорошо )
+
+        </p>
+
+
+
+
         <button class="fade delay3" onclick="backPage()">
+
             ⬅ Назад
+
         </button>
 
 
-    </div>
-
-</div>
-
-    <!-- 📸 Просмотр фотографий -->
-
-    <div id="viewer">
-
-        <span id="close">&times;</span>
-
-        <button id="prev" class="navButton">❮</button>
-
-        <img id="bigImage" src="" alt="">
-
-        <button id="next" class="navButton">❯</button>
 
     </div>
 
-    <!-- 🎵 Музыка -->
-
-      <div class="musicBox">
-
-<button id="musicButton">
-🎵 Музыка
-</button>
-
-<input 
-type="range"
-id="volume"
-min="0"
-max="1"
-step="0.01"
-value="0.5">
 
 </div>
+
+
+
+
+
+<!-- =========================
+     ПРОСМОТР ФОТО
+========================= -->
+
+
+<div id="viewer">
+
+
+    <span id="close">
+
+        &times;
+
+    </span>
+
+
+
+    <button id="prev" class="navButton">
+
+        ❮
+
+    </button>
+
+
+
+
+    <img id="bigImage" src="" alt="">
+
+
+
+
+    <button id="next" class="navButton">
+
+        ❯
+
+    </button>
+
+
+</div>
+
+
+
+
+
+
+<!-- =========================
+     МУЗЫКА
+========================= -->
+
+
+<div class="musicBox">
+
+
+    <button id="musicButton">
+
+        🎵 Музыка
+
+    </button>
+
+
+
+    <input 
+    id="volume"
+    type="range"
+    min="0"
+    max="1"
+    step="0.01"
+    value="0.5">
+
+
+</div>
+
+
 
 
 <audio id="music" loop>
 
-<source src="music.mp3" type="audio/mpeg">
+
+    <source src="music.mp3" type="audio/mpeg">
+
 
 </audio>
 
 
+
+
+
 <script src="script.js"></script>
+
 
 </body>
 
