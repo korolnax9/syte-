@@ -24,72 +24,166 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 
-// Один общий документ для тир-листа
-const tierDoc = doc(db, "tierLists", "polka");
+// =================================================
+// СТРАНИЦА 3 — ТИР-ЛИСТ ПОЛИНЫ
+// =================================================
+
+const page3 = document.getElementById("page3");
+
+const inputs = document.querySelectorAll("#page3 input");
+
+const selects3 =
+    document.querySelectorAll("#page3 .tierSelect");
+
+const saveButton =
+    document.getElementById("saveTierButton");
 
 
-const selects = document.querySelectorAll("#page2 .tierSelect");
+// Документ Firebase
+const polkaTierDoc =
+    doc(db, "tierLists", "polkaAnswers");
 
 
-// ======================================
-// СОХРАНЕНИЕ В FIREBASE
-// ======================================
+// =================================================
+// СОХРАНЕНИЕ
+// =================================================
 
-selects.forEach((select, index) => {
+async function savePolkaTier(){
 
-    select.addEventListener("change", async () => {
+    const data = {
 
-        const data = {};
+        inputs: [],
 
-        selects.forEach((item, i) => {
-            data["item" + i] = item.value;
-        });
+        selects: []
+
+    };
 
 
-        try {
+    // Сохраняем написанные ответы
 
-            await setDoc(tierDoc, data);
+    inputs.forEach(input => {
 
-            console.log("Тир-лист сохранён!");
-
-        } catch (error) {
-
-            console.error("Ошибка сохранения:", error);
-
-        }
+        data.inputs.push(input.value);
 
     });
 
-});
+
+    // Сохраняем оценки S/A/B/C/D
+
+    selects3.forEach(select => {
+
+        data.selects.push(select.value);
+
+    });
 
 
-// ======================================
-// ПОЛУЧЕНИЕ ИЗ FIREBASE
-// ======================================
+    try {
 
-onSnapshot(tierDoc, (snapshot) => {
+        await setDoc(
+            polkaTierDoc,
+            data
+        );
 
-    if (!snapshot.exists()) {
-        return;
+        console.log(
+            "Ответы Полины сохранены!"
+        );
+
+
+    } catch(error) {
+
+        console.error(
+            "Ошибка Firebase:",
+            error
+        );
+
     }
 
-
-    const data = snapshot.data();
-
-
-    selects.forEach((select, index) => {
-
-        const value = data["item" + index];
+}
 
 
-        if (value) {
+// =================================================
+// КНОПКА СОХРАНИТЬ
+// =================================================
 
-            select.value = value;
+if(saveButton){
 
-            updateTier(select);
+    saveButton.addEventListener(
+        "click",
+        savePolkaTier
+    );
+
+}
+
+
+// =================================================
+// ПОЛУЧАЕМ ОТВЕТЫ В РЕАЛЬНОМ ВРЕМЕНИ
+// =================================================
+
+onSnapshot(
+    polkaTierDoc,
+    (snapshot) => {
+
+        if(!snapshot.exists()){
+
+            return;
 
         }
 
-    });
 
-});
+        const data =
+            snapshot.data();
+
+
+        // -----------------------------
+        // ТЕКСТОВЫЕ ОТВЕТЫ
+        // -----------------------------
+
+        if(data.inputs){
+
+            inputs.forEach(
+                (input, index) => {
+
+                    if(
+                        data.inputs[index]
+                        !== undefined
+                    ){
+
+                        input.value =
+                            data.inputs[index];
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        // -----------------------------
+        // ОЦЕНКИ
+        // -----------------------------
+
+        if(data.selects){
+
+            selects3.forEach(
+                (select, index) => {
+
+                    if(
+                        data.selects[index]
+                        !== undefined
+                    ){
+
+                        select.value =
+                            data.selects[index];
+
+                        updateTier(select);
+
+                    }
+
+                }
+            );
+
+        }
+
+    }
+);
