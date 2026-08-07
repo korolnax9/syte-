@@ -921,17 +921,7 @@ const tierColors={
 
 };
 
-document.querySelectorAll(".tierSelect").forEach(select=>{
 
-    updateTier(select);
-
-    select.addEventListener("change",()=>{
-
-        updateTier(select);
-
-    });
-
-});
 
 function updateTier(select){
 
