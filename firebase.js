@@ -187,3 +187,122 @@ onSnapshot(
 
     }
 );
+```javascript
+// =================================================
+// СТРАНИЦА 2 — МОЙ ТИР-ЛИСТ
+// =================================================
+
+const selects2 =
+    document.querySelectorAll("#page2 .tierSelect");
+
+const saveMyTierButton =
+    document.getElementById("saveMyTierButton");
+
+const myTierDoc =
+    doc(db, "tierLists", "polka");
+
+
+// =================================================
+// СОХРАНИТЬ МОИ ОЦЕНКИ
+// =================================================
+
+if(saveMyTierButton){
+
+    saveMyTierButton.addEventListener(
+        "click",
+        async () => {
+
+            const data = {};
+
+
+            selects2.forEach(
+                (select, index) => {
+
+                    data["item" + index] =
+                        select.value;
+
+                }
+            );
+
+
+            try {
+
+                await setDoc(
+                    myTierDoc,
+                    data
+                );
+
+
+                saveMyTierButton.innerHTML =
+                    "✓ Сохранено";
+
+
+                saveMyTierButton.classList.add(
+                    "saved"
+                );
+
+
+                console.log(
+                    "Мой тир-лист сохранён!"
+                );
+
+
+            } catch(error) {
+
+                console.error(
+                    "Ошибка сохранения:",
+                    error
+                );
+
+
+                saveMyTierButton.innerHTML =
+                    "Ошибка сохранения";
+
+            }
+
+        }
+    );
+
+}
+
+
+// =================================================
+// ЗАГРУЗКА МОИХ ОЦЕНОК
+// =================================================
+
+onSnapshot(
+    myTierDoc,
+    (snapshot) => {
+
+        if(!snapshot.exists()){
+
+            return;
+
+        }
+
+
+        const data =
+            snapshot.data();
+
+
+        selects2.forEach(
+            (select, index) => {
+
+                const value =
+                    data["item" + index];
+
+
+                if(value){
+
+                    select.value =
+                        value;
+
+                    updateTier(select);
+
+                }
+
+            }
+        );
+
+    }
+);
